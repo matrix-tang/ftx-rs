@@ -10,9 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ca59d22-aa88-4ac9-8ba3-4933918059c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/examples/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/ftx_endpoints.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/ftx_endpoints.rs" beforeDir="false" afterPath="$PROJECT_DIR$/examples/ftx_endpoints.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +135,7 @@
       <workItem from="1639200393534" duration="6660000" />
       <workItem from="1639465697398" duration="3742000" />
       <workItem from="1639486627148" duration="38000" />
-      <workItem from="1639486668228" duration="1178000" />
+      <workItem from="1639486668228" duration="2013000" />
     </task>
     <servers />
   </component>
