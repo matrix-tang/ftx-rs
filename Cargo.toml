@@ -1,0 +1,21 @@
+[package]
+name = "ftx-rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+url = "2.2.2"
+log = "0.4.14"
+tungstenite = { version = "0.16.0", features = ["native-tls"] }
+anyhow = "1.0.45"
+error-chain = "0.12.4"
+reqwest = "0.9"
+serde = "1.0.130"
+serde_json = "1.0.68"
+warp = "0.3"
+rust_decimal = "1.18.0"
+chrono = "0.4.19"
+hex = "0.4.3"
+ring = "0.16.20"
