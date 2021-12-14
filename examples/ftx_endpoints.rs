@@ -25,6 +25,3 @@ fn main() {
         }
     }
 }
-
-
-db.createUser({user:"root",pwd:"asd123456",roles: [{role:"readWrite", db: "ce-main" }]})
