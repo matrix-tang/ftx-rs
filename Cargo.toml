@@ -3,13 +3,13 @@ name = "ftx-rs"
 version = "0.1.2"
 edition = "2021"
 authors = ["matrix.tang <matrix.tang@outlook.com>"]
-license = "Apache-2.0"
+license = "MIT OR Apache-2.0"
 description = "Rust Library for the FTX API"
 readme = "README.md"
 homepage = "https://github.com/matrix-tang/ftx-rs"
 repository = "https://github.com/matrix-tang/ftx-rs"
 keywords = ["rust", "exchange", "ftx", "ftx-api", "ftx-futures"]
-categories = ["command-line-utilities"]
+categories = ["api-bindings", "cryptography::cryptocurrencies"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

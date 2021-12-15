@@ -8,7 +8,7 @@ Add this to your Cargo.toml
 
 ```toml
 [dependencies]
-ftx-rs = "0.1.1"
+ftx-rs = "0.1.3"
 ```
 
 ### MARKET DATA
