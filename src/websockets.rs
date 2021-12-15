@@ -277,6 +277,7 @@ impl WebSockets {
                                 let event: NotificationEvent = serde_json::from_str(&text)?;
                                 h.on_subscribed(event);
                             } else {
+                                // println!("text: {:?}", &text);
                                 let event: DataEvent = serde_json::from_str(&text)?;
                                 h.on_data_event(event);
                             }

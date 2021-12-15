@@ -59,7 +59,7 @@ pub struct TradesData {
 
 #[derive(Debug, Deserialize)]
 pub struct OrderBookInfo {
-    pub time: String,
+    pub time: Decimal,
     pub checksum: i64,
     pub bids: Vec<Vec<Decimal>>,
     pub asks: Vec<Vec<Decimal>>,

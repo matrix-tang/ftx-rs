@@ -75,3 +75,9 @@ fn main() {
     // ...
 }
 ```
+
+### FTX_ENDPOINTS
+API, see [example](https://github.com/matrix-tang/ftx-rs/blob/main/examples/ftx_endpoints.rs)
+
+### FTX_WEBSOCKETS
+WEBSOCKET, see [example](https://github.com/matrix-tang/ftx-rs/blob/main/examples/ftx_websocket.rs)
