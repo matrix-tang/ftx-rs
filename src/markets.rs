@@ -14,24 +14,25 @@ impl MarketsClient {
         }
     }
 
-    pub fn ticker_all(&self) -> Result<Vec<model::TickerData>> {
+    pub fn get_markets(&self) -> Result<Vec<model::MarketInfo>> {
         let data = self.client.get("/markets".into(), "".into())?;
-        let ticker: model::Ticker = serde_json::from_str(data.as_str())?;
-        Ok(ticker.result)
+        let markets: model::ResultData<Vec<model::MarketInfo>> =
+            serde_json::from_str(data.as_str())?;
+        Ok(markets.result)
     }
 
-    pub fn ticker<S>(&self, symbol: S) -> Result<model::TickerData>
+    pub fn get_market<S>(&self, symbol: S) -> Result<model::MarketInfo>
     where
         S: Into<String>,
     {
         let endpoint: String = format!("/markets/{}", symbol.into());
         let data = self.client.get(endpoint, "".into())?;
-        let ticker: model::TickerOne = serde_json::from_str(data.as_str())?;
-        Ok(ticker.result)
+        let market: model::ResultData<model::MarketInfo> = serde_json::from_str(data.as_str())?;
+        Ok(market.result)
     }
 
     // depth -> max 100, default 20
-    pub fn orderbook<S, D>(&self, symbol: S, depth: D) -> Result<model::Depth>
+    pub fn get_orderbook<S, D>(&self, symbol: S, depth: D) -> Result<model::Depth>
     where
         S: Into<String>,
         D: Into<i64>,
@@ -42,27 +43,27 @@ impl MarketsClient {
             depth.into()
         );
         let data = self.client.get(endpoint, "".into())?;
-        let depth: model::OrderBook = serde_json::from_str(data.as_str())?;
+        let depth: model::ResultData<model::Depth> = serde_json::from_str(data.as_str())?;
         Ok(depth.result)
     }
 
-    pub fn trades<S>(&self, symbol: S) -> Result<Vec<model::Trade>>
+    pub fn get_trades<S>(&self, symbol: S) -> Result<Vec<model::TradeInfo>>
     where
         S: Into<String>,
     {
         let endpoint: String = format!("/markets/{}/trades", symbol.into());
         let data = self.client.get(endpoint, "".into())?;
-        let trades: model::Trades = serde_json::from_str(data.as_str())?;
+        let trades: model::ResultData<Vec<model::TradeInfo>> = serde_json::from_str(data.as_str())?;
         Ok(trades.result)
     }
 
-    pub fn candles<S, R, ST, ET>(
+    pub fn get_historical_prices<S, R, ST, ET>(
         &self,
         symbol: S,
         resolution: R,
         start_time: ST,
         end_time: ET,
-    ) -> Result<Vec<model::Candle>>
+    ) -> Result<Vec<model::CandleInfo>>
     where
         S: Into<String>,
         R: Into<i64>,
@@ -77,7 +78,8 @@ impl MarketsClient {
             end_time.into()
         );
         let data = self.client.get(endpoint, "".into())?;
-        let candles: model::Candles = serde_json::from_str(data.as_str())?;
+        let candles: model::ResultData<Vec<model::CandleInfo>> =
+            serde_json::from_str(data.as_str())?;
         Ok(candles.result)
     }
 }
@@ -86,9 +88,9 @@ impl MarketsClient {
 mod tests {
     use super::*;
     #[test]
-    fn test_ticker() {
+    fn test_get_market() {
         let client = MarketsClient::new();
-        let ticker = client.ticker("BTC-PERP");
+        let ticker = client.get_market("BTC-PERP");
         println!("{:#?}", ticker);
     }
 }

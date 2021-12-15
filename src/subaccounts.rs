@@ -14,22 +14,24 @@ impl SubAccountsClient {
         }
     }
 
-    pub fn get_subaccounts(&self) -> Result<Vec<model::SubAccount>> {
+    pub fn get_subaccounts(&self) -> Result<Vec<model::SubAccountInfo>> {
         let payload: String = format!("{}", "{}");
         let data = self
             .client
             .get_signed("/subaccounts".into(), payload, None)?;
-        let subaccounts: model::SubAccounts = serde_json::from_str(data.as_str())?;
+        let subaccounts: model::ResultData<Vec<model::SubAccountInfo>> =
+            serde_json::from_str(data.as_str())?;
         Ok(subaccounts.result)
     }
 
-    pub fn create_subaccount(&self, nickname: String) -> Result<model::SubAccount> {
+    pub fn create_subaccount(&self, nickname: String) -> Result<model::SubAccountInfo> {
         let payload = json!({ "nickname": nickname });
         let data = self
             .client
             .post_signed("/subaccounts".into(), payload.to_string(), None)?;
-        let subaccount: model::SubAccountOne = serde_json::from_str(data.as_str())?;
-        Ok(subaccount.result.unwrap())
+        let subaccount: model::ResultData<model::SubAccountInfo> =
+            serde_json::from_str(data.as_str())?;
+        Ok(subaccount.result)
     }
 
     pub fn change_subaccount_name(&self, nickname: String, new_nickname: String) -> Result<bool> {
@@ -39,7 +41,7 @@ impl SubAccountsClient {
             payload.to_string(),
             None,
         )?;
-        let r: model::SubAccountOne = serde_json::from_str(data.as_str())?;
+        let r: model::ResultData<model::SubAccountInfo> = serde_json::from_str(data.as_str())?;
         Ok(r.success)
     }
 
@@ -48,19 +50,20 @@ impl SubAccountsClient {
         let data = self
             .client
             .delete_signed("/subaccounts".into(), payload.to_string(), None)?;
-        let r: model::SubAccountOne = serde_json::from_str(data.as_str())?;
+        let r: model::ResultData<model::SubAccountInfo> = serde_json::from_str(data.as_str())?;
         Ok(r.success)
     }
 
     pub fn get_subaccount_balances(
         &self,
         nickname: String,
-    ) -> Result<Vec<model::SubAccountBalance>> {
+    ) -> Result<Vec<model::SubAccountBalanceInfo>> {
         let payload: String = format!("{}", "{}");
 
         let endpoint = format!("/subaccounts/{}/balances", nickname);
         let data = self.client.get_signed(endpoint.into(), payload, None)?;
-        let subaccount_balances: model::SubAccountBalances = serde_json::from_str(data.as_str())?;
+        let subaccount_balances: model::ResultData<Vec<model::SubAccountBalanceInfo>> =
+            serde_json::from_str(data.as_str())?;
         Ok(subaccount_balances.result)
     }
 
@@ -70,16 +73,14 @@ impl SubAccountsClient {
         size: f64,
         source: String,
         destination: String,
-    ) -> Result<model::Transfer> {
+    ) -> Result<model::TransferInfo> {
         let payload =
             json!({ "coin": coin, "size": size, "source": source, "destination": destination });
-
-        // println!("{}", payload);
         let data =
             self.client
                 .post_signed("/subaccounts/transfer".into(), payload.to_string(), None)?;
-        // println!("{:#?}", data);
-        let subacounts_transfer: model::SubaccountsTransfer = serde_json::from_str(data.as_str())?;
+        let subacounts_transfer: model::ResultData<model::TransferInfo> =
+            serde_json::from_str(data.as_str())?;
         Ok(subacounts_transfer.result)
     }
 }

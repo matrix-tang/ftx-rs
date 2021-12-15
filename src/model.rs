@@ -11,7 +11,7 @@ pub struct AnotherOption {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
-pub struct TickerData {
+pub struct MarketInfo {
     pub name: String, //"BTC-0628",
     pub base_currency: Option<String>,
     pub quote_currency: Option<String>,
@@ -37,31 +37,13 @@ pub struct TickerData {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct TickerOne {
-    pub success: bool,
-    pub(crate) result: TickerData,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Ticker {
-    pub success: bool,
-    pub(crate) result: Vec<TickerData>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Depth {
     pub bids: Vec<Vec<Decimal>>,
     pub asks: Vec<Vec<Decimal>>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct OrderBook {
-    pub success: bool,
-    pub(crate) result: Depth,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Trade {
+pub struct TradeInfo {
     pub id: i64,
     pub price: Decimal,
     pub size: Decimal,
@@ -71,14 +53,8 @@ pub struct Trade {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Trades {
-    pub success: bool,
-    pub(crate) result: Vec<Trade>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
-pub struct Candle {
+pub struct CandleInfo {
     pub start_time: String,
     pub time: Decimal,
     pub open: Decimal,
@@ -89,13 +65,7 @@ pub struct Candle {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Candles {
-    pub success: bool,
-    pub(crate) result: Vec<Candle>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct SubAccount {
+pub struct SubAccountInfo {
     pub nickname: String,
     pub special: bool,
     pub deletable: bool,
@@ -104,20 +74,8 @@ pub struct SubAccount {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct SubAccounts {
-    pub success: bool,
-    pub(crate) result: Vec<SubAccount>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct SubAccountOne {
-    pub success: bool,
-    pub(crate) result: Option<SubAccount>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
-pub struct SubAccountBalance {
+pub struct SubAccountBalanceInfo {
     pub coin: String,
     pub total: Decimal,
     pub free: Decimal,
@@ -127,25 +85,13 @@ pub struct SubAccountBalance {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct SubAccountBalances {
-    pub success: bool,
-    pub(crate) result: Vec<SubAccountBalance>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Transfer {
+pub struct TransferInfo {
     pub id: i64,
     pub coin: String,
     pub size: f64,
     pub time: String,
     pub notes: String,
     pub status: String,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct SubaccountsTransfer {
-    pub success: bool,
-    pub(crate) result: Transfer,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
