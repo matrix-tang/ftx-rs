@@ -1,6 +1,6 @@
 [package]
 name = "ftx-rs"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 authors = ["matrix.tang <matrix.tang@outlook.com>"]
 license = "MIT OR Apache-2.0"
