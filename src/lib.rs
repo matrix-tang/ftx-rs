@@ -12,6 +12,7 @@ pub mod api;
 pub mod client;
 pub mod errors;
 pub mod events;
+pub mod fills;
 pub mod futures;
 pub mod markets;
 pub mod model;

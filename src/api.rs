@@ -1,4 +1,5 @@
 use crate::account::*;
+use crate::fills::*;
 use crate::futures::*;
 use crate::markets::*;
 use crate::orders::*;
@@ -13,6 +14,7 @@ pub struct Ftx {
     pub account: AccountClient,
     pub wallet: WalletClient,
     pub orders: OrdersClient,
+    pub fills: FillsClient,
 }
 
 impl Ftx {
@@ -24,6 +26,7 @@ impl Ftx {
             account: AccountClient::new(api_key.clone(), secret_key.clone()),
             wallet: WalletClient::new(api_key.clone(), secret_key.clone()),
             orders: OrdersClient::new(api_key.clone(), secret_key.clone()),
+            fills: FillsClient::new(api_key.clone(), secret_key.clone()),
         }
     }
 }

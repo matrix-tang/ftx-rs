@@ -428,3 +428,25 @@ pub struct TriggerOrderInfo {
     filled_size: Decimal,
     avg_fill_price: Option<Decimal>,
 }
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct FillInfo {
+    id: i64,
+    market: String,
+    future: Option<String>,
+    base_currency: String,
+    quote_currency: String,
+    #[serde(rename = "type")]
+    option_type: String,
+    side: String,
+    price: Decimal,
+    size: Decimal,
+    order_id: i64,
+    time: String,
+    trade_id: i64,
+    fee_rate: Decimal,
+    fee: Decimal,
+    fee_currency: String,
+    liquidity: String,
+}

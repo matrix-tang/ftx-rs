@@ -8,7 +8,7 @@ Add this to your Cargo.toml
 
 ```toml
 [dependencies]
-ftx-rs = "0.1.5"
+ftx-rs = "0.1.6"
 ```
 
 ### REST
@@ -67,7 +67,7 @@ ftx-rs = "0.1.5"
     // ...
 
     // fills
-    // ...
+    // api.fills.get_fills
         
         
 ```
