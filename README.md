@@ -8,7 +8,7 @@ Add this to your Cargo.toml
 
 ```toml
 [dependencies]
-ftx-rs = "0.1.3"
+ftx-rs = "0.1.5"
 ```
 
 ### REST
@@ -54,6 +54,16 @@ ftx-rs = "0.1.3"
 
     // orders
     // api.orders.get_open_orders
+    // api.orders.get_order_history
+    // api.orders.get_open_trigger_orders
+    // api.orders.place_order
+    // api.orders.modify_order
+    // api.orders.modify_order_by_client_id
+    // api.orders.get_order_status
+    // api.orders.get_order_status_by_client_id
+    // api.orders.cancel_order
+    // api.orders.cancel_order_by_client_id
+    // api.orders.cancel_all_orders
     // ...
 
     // fills

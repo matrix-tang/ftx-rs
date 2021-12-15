@@ -319,9 +319,11 @@ pub struct BalanceInfo {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct ResultData<T> {
     pub success: bool,
     pub(crate) result: T,
+    pub has_more_data: Option<bool>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -374,4 +376,55 @@ pub struct Airdrops {
     pub size: Decimal,
     pub time: String,
     pub status: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct OrderInfo {
+    id: i64,
+    client_id: Option<String>,
+    market: String,
+    #[serde(rename = "type")]
+    option_type: String,
+    side: String,
+    price: Decimal,
+    size: Decimal,
+    status: String,
+    filled_size: Decimal,
+    remaining_size: Decimal,
+    reduce_only: bool,
+    liquidation: Option<bool>,
+    avg_fill_price: Option<Decimal>,
+    post_only: bool,
+    ioc: bool,
+    created_at: String,
+    future: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct TriggerOrderInfo {
+    id: i64,
+    market: String,
+    future: Option<String>,
+    side: String,
+    #[serde(rename = "type")]
+    option_type: String,
+    order_price: Option<Decimal>,
+    trigger_price: Decimal,
+    size: Decimal,
+    status: String,
+    created_at: String,
+    triggered_at: Option<String>,
+    order_id: Option<String>,
+    error: Option<String>,
+    reduce_only: bool,
+    trail_value: Option<Decimal>,
+    trail_start: Option<Decimal>,
+    cancelled_at: Option<Decimal>,
+    cancel_reason: Option<String>,
+    retry_until_filled: bool,
+    order_type: String,
+    filled_size: Decimal,
+    avg_fill_price: Option<Decimal>,
 }
