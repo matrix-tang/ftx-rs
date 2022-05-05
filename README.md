@@ -2,6 +2,8 @@
 
 Unofficial Rust Library for the [Ftx API](https://docs.ftx.com/#overview)
 
+<a href="https://crates.io/crates/ftx-rs" rel="nofollow noopener noreferrer"><img src="https://img.shields.io/crates/v/ftx-rs" alt="Crates.io"></a>
+
 ## Usage
 
 Add this to your Cargo.toml
